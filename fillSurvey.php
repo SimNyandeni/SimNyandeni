@@ -292,9 +292,9 @@
   </main>
 </div>
  <?php //backend code to database
-	if(isset($_POST['submit'])) //if the form application is submitted then run below code
+	if(isset($_POST['submit']))
 	{
-		//users $_POST gets data from html to php variables
+		
 		$lname = $_POST['lname'];
 		$fname = $_POST['fname'];
 		$phone = $_POST['phone'];
@@ -315,7 +315,7 @@
 		$tv = $_POST['tv'];
 		$fmradio = $_POST['fmradio'];
 		
-		if($age < 5 || $age > 120) //checks if age is less than 5 or greater than 120
+		if($age < 5 || $age > 120) 
 		{
 			echo '<script type="text/javascript"> document.getElementById("ageError").innerHTML = "Enter Age between 5 and 120" </script>';
 		
@@ -327,16 +327,16 @@
 				$insertUser= "insert into user values('$lname','$fname','$phone','$date','$age')";
 				$queryUser = mysqli_query($conn,$insertUser);
 				
-				if($queryUser) //if data is inserted in user table then insert in fav_food table
+				if($queryUser) 
 				{
 					$insertFood = "insert into fav_food values('$phone','$pizza','$pasta','$pap','$chicken','$beef','$other')";
 					$queryFood = mysqli_query($conn,$insertFood);
 					
-					if($queryFood) //if data is inserted in fav_food table then insert in rates table
+					if($queryFood) 
 					{
 						$insRates = "insert into rate values('$phone','$eatOut','$movies','$tv','$fmradio')";
 						$queryRates = mysqli_query($conn,$insRates);
-						if($queryRates) //if data is inserted in fav_food table then insert in rates table
+						if($queryRates)
 						{
 							echo '<script type="text/javascript"> alert("Data is Captured!") </script>';
 							echo '<script>
