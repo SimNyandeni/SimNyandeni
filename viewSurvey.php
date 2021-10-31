@@ -33,19 +33,14 @@ include "header.php";
 								  $i = 0;
 									$total = "select * from user";
 									$query = mysqli_query($conn,$total);
-									//fill array with data from user database
 									while($row = mysqli_fetch_assoc($query))
 									{
 										$array[$i] = $row['age'];
 										$i++;
 									}
 									sort($array); //sort array from small to large number
-									$counter = count($array); //count how many rows does it have in database									
-									
-									//never mind this for loop, it helps you see your sort number//
-									//uncomment the echo statement and run View Survey page under Survey results
-									//results will show you min age, mid age and max age.
-									for($j=0; $j < $counter;$j++) //loop from beginning to end of counter
+									$counter = count($array);
+									for($j=0; $j < $counter;$j++) 
 									{
 										
 										//echo '<span class="text-black">.'.$array[$j].'  </span>';  //just to see range
@@ -78,11 +73,11 @@ include "header.php";
 								<?php
 									$totalNum = "select count(phoneID) as tot from fav_food";
 									$all = mysqli_query($conn,$totalNum);
-									$allTot = mysqli_fetch_assoc($all);//calculating total rows to be divided by pizza,pasta or pap?>
+									$allTot = mysqli_fetch_assoc($all);?>
 								<tr>
 								  <th scope="row">1</th>
 								  <td>Percentage Of People who like Pizza: </td>
-								  <?php //counting all pizzas in fav food table to be divided by all total rows above
+								  <?php 
 									$total = "select count(Pizza) as totPiz from fav_food where pizza = 'Pizza'";
 									$query = mysqli_query($conn,$total);
 									$coupz = mysqli_fetch_assoc($query);?>
@@ -122,7 +117,7 @@ include "header.php";
 								<tr>
 								  <th scope="row">1</th>
 								  <td>People like to eat out</td>
-								  <?php //calculate sum of all eat out then divide them by totRates
+								  <?php
 									$tota = "select sum(eat_out) as totEat from rate";
 									$query = mysqli_query($conn,$tota);
 									$check = mysqli_fetch_assoc($query);?>
